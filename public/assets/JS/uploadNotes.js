@@ -21,6 +21,10 @@ document.addEventListener('headerLoaded', () => {
     uploadArea.addEventListener('drop', (e) => {
         e.preventDefault();
         uploadArea.classList.remove('dragover');
+        if(e.dataTransfer.files.length>1){
+            filename.innerHTML='<p style="color:red">Please upload only one file</p>';
+            return;
+        }
         selectedFile=e.dataTransfer.files[0];
         showFileName(selectedFile);
     })
@@ -34,6 +38,10 @@ document.addEventListener('headerLoaded', () => {
 
     function showFileName(file) {
         if (!file) return;
+        if(file.type !== 'application/pdf'){
+            filename.innerHTML='<p style="color:red">Please upload a PDF file</p>';
+            return;
+        }
         filename.innerHTML = `<p class='namesize'>${file.name} (${(file.size / 1024).toFixed(1)}KB)</p> <i class="fa-solid fa-xmark" onclick="removeFile()"></i>`;
     }
 
