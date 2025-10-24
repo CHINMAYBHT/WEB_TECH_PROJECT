@@ -4,7 +4,34 @@ document.addEventListener('headerLoaded', () => {
     let filename = document.querySelector('.filename');
     let browseBtn = document.querySelector('.uploadarea button');
     let uploadArea = document.querySelector('.uploadarea');
+    let uploadbtn=document.querySelector('.send');
+    let loader=document.querySelector('.loader');
+    let textinput=document.querySelector('.input textarea');
 
+    let selectedFile=null;
+
+    function loading(){
+        return new Promise((res,rej)=>{
+            setTimeout(() => {
+                res(500);
+            }, 2000);
+        })
+    }
+    uploadbtn.addEventListener('click',async()=>{
+        if(selectedFile==null && textinput.value==""){
+            alert("Please select a file or enter some text");
+            return;
+        }
+        if(selectedFile!=null && textinput.value!=""){
+            alert("Please select only file or enter only text");
+            return;
+        }
+        loader.classList.add('display');
+        let val=await loading();
+        loader.classList.remove('display');
+        textinput.value="";
+        alert("Uploaded");
+    })
     browseBtn.addEventListener('click', () => fileInput.click());
 
     uploadArea.addEventListener('dragover', (e) => {
@@ -31,8 +58,8 @@ document.addEventListener('headerLoaded', () => {
 
     fileInput.addEventListener('change', (e) => {
         e.preventDefault();
-        let file = e.target.files[0];
-        showFileName(file);
+        selectedFile = e.target.files[0];
+        showFileName(selectedFile);
     })
 
 
@@ -49,5 +76,6 @@ document.addEventListener('headerLoaded', () => {
     window.removeFile=function(){
         fileInput.value = "";
         filename.innerHTML = "";
+        selectedFile=null;
     }
 })

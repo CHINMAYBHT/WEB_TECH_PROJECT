@@ -10,40 +10,29 @@
 </head>
 
 <body>
+    <div class="loader"></div>
     <div class="header"></div>
     <main>
         <div class="container">
             <section class="upload">
                 <div class="uploadBox">
+                <h2 style="margin-bottom: 10px; color: white;">Paste or Upload Notes</h2>
                     <div class="input">
                         <textarea placeholder="Paste your notes here......"></textarea>
-                        <button class="send"><i class="fa-solid fa-paper-plane"></i></button>
                     </div>
                     <div id="uploadArea" class="uploadarea">
-                        <i class="fa-solid fa-upload"></i>
-                            <p>Drag & drop your file here or <p><button>Browse Files</button></p></p>
-                            <input type="file" id="fileInput" accept=".pdf" />
+                        <i class="fa-solid fa-cloud-arrow-up "></i>
+                        <p>Drag & drop your file here or
+                        <p><button>Browse Files</button></p>
+                        </p>
+                        <input type="file" id="fileInput" accept=".pdf" />
                     </div>
                     <div class="filename"></div>
                 </div>
             </section>
-            <section class="preview">
-                <div class="summary">
-                    <i class="fas fa-magic magic"></i>
-                    <p class="head">Summary</p>
-                </div>
-                <div class="flashcard">
-                    <i class="fas fa-magic magic"></i>
-                    <p class="head">Flashcard</p>
-                </div>
-                <div class="quiz">
-                    <i class="fas fa-magic magic"></i>
-                    <p class="head">Quiz</p>
-                </div>
-            </section>
+            <div class="uploadfilesbutton"><button class="send"><p>Upload</p><i class="fa-solid fa-paper-plane"></i></button></div>
         </div>
     </main>
-
     <script src="../JS/header.js"></script>
     <script src="../JS/uploadNotes.js"></script>
 </body>

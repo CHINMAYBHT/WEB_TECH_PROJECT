@@ -22,6 +22,41 @@ html {
 
 
 
+/* Loader */
+.loader{
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 9999;
+}
+
+.loader.display{
+    display: block;
+}
+
+.loader::before{
+    content: "";
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1.3s linear infinite;
+}
+
+@keyframes spin {
+    to {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
 
 
 
@@ -36,87 +71,63 @@ main{
     width: 100vw;
     padding-top: 2%;
     display: flex;
-    justify-content: right;
+    justify-content: center;
 }
 
 .container{
     display: flex;
+    flex-direction: column;
     height: 85%;
-    width: 90%;
+    width: 70%;
     gap: 10px;
     margin:0px 50px 0px 50px;
     justify-content: space-between;
-    
+    border: 1px solid rgba(0, 0, 0, 0.076);
+    box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.076);
+    border-radius: 15px;
+    padding: 10px;
+    background-color: #7C6FFF;
+}
+
+.uploadfilesbutton{
+    display: flex;
+    justify-content: end;
+    width: 90%;
+    margin-bottom: 10px;
+}
+.send{
+    margin-bottom: 2px;
+    border: none;
+    /* background: linear-gradient(135deg, #6b59f2 0%, #5343fe 100%); */
+    color: white;
+    border-radius: 25px;
+    padding: 10px 14px;
+    cursor: pointer;
+    font-size: 1.2em;
+    display: flex;
+    gap:10px;
+    font-weight: bold;
+    color: black;
+}
+.send:hover{
+    /* background: linear-gradient(135deg, #5540f4 0%, #3e2ef2 100%); */
+}
+.send>.fa-paper-plane{
+    margin-top: 4px;
 }
 
 
 
-/* Upload file */
+
+
+
+
+
+/* Upload */
 .upload{
     flex: 4;
-    border: 1px solid black;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    border-radius: 30px;
 }
 
-
-/* Generate flashcards etc */
-.preview{
-    padding: 20px;
-    flex: 1;
-    border-radius: 30px;
-    border: 1px solid white;
-    display: grid;
-    grid-template-columns:125px 125px;
-    grid-template-rows: 125px 125px;
-    border: 1px solid black;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    gap: 20px;
-}
-
-.summary,.flashcard,.quiz{
-    position: relative;
-    /* background-color: rgba(125, 91, 112, 0.537); */
-    background-color: rgba(255, 255, 255,0.8);
-    border-radius: 30px;
-    padding: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    border: 1px solid black;
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
-    cursor: pointer;
-    /* color: white; */
-}
-
-.summary:hover,.flashcard:hover,.quiz:hover{
-    /* background-color: rgba(154, 113, 138, 0.537); */
-    background-color: rgba(255, 255, 255, 0.543);
-}
-
-.head{
-    font-size: 1em;
-    font-weight: bold;
-}
-
-
-.preview .magic{
-    background: #7C6FFF;
-    border-radius: 50%;
-    padding: 8px;
-    position: absolute;
-    font-size: 0.6em;
-    top: 8%;
-    left: 8%;
-    color: white;
-}
-
-.preview .magic:hover{
-    background-color: #6B5FE8;
-}
-
-
-/* Upload Box */
  .uploadBox{
     position: relative;
     display: flex;
@@ -124,42 +135,33 @@ main{
     align-items: center;
     justify-content: space-evenly;
     height: 100%;
-    padding: 45px 0px 20px 0px;
+    padding: 15px 0px 0px 0px;
     gap: 10px;
 }
 
 .uploadBox .input{
-    height: 50%;
+    flex: 2;
     position: relative;
     width:80%;
 }
 
 .uploadBox>.input>textarea{
-    position: inherit;
     resize: none;
     width: 100%;
     height: 100%;
     border-radius: 15px;
-    padding: 10px;
+    padding: 10px 20px;
+    font-size: 1em;
+    transition: none;
+    border: 1px solid rgba(0, 0, 0, 0.076);
 }
-.send{
-    position: absolute;
-    bottom: 2%;
-    right: 1%;
-    margin-bottom: 2px;
-    border: none;
-    background: linear-gradient(135deg, #6b59f2 0%, #5343fe 100%);
-    color: white;
-    border-radius: 15px;
-    padding: 10px 14px;
-    cursor: pointer;
-}
+
 .input>textarea:focus{
-    outline: 1px solid rgba(0, 0, 0, 0.275);
+    outline: 1px solid rgba(0, 0, 0, 0.476);
 }
-input:focus{
-    outline:1px solid #7C6FFF;
-}
+
+
+
 
 
 /* Drag and drop */
@@ -169,16 +171,18 @@ input:focus{
     justify-content: center;
     align-items: center;
     font-weight: 600;
-    border: 1px solid rgba(0, 0, 0, 0.176);
+    border: 1px solid rgba(0, 0, 0, 0.076);
     width:80%;
     border-radius: 15px;
-    height: 50%;
+    flex: 2;
     padding: 10px;
+    background-color: white;
 }
 
-.fa-upload{
-    font-size: 2em;
+.fa-upload,.fa-cloud-arrow-up{
+    font-size: 3em;
     margin-bottom: 20px;
+    color: rgb(0, 140, 255);
 }
 .uploadarea button{
     background-color: rgb(0, 140, 255);
@@ -191,6 +195,9 @@ input:focus{
     padding: 10px 20px;
     cursor: pointer;
 }
+.uploadarea button:hover{
+    background-color: rgb(4, 123, 220);
+}   
 .uploadarea.dragover{
     border: 2px solid rgb(0, 0, 0);
     background: #8b7e0a64;
@@ -204,10 +211,7 @@ input:focus{
     align-items: center;
     gap: 5px;
 }
-.fa-upload{
-    color: rgb(0, 140, 255);
 
-}
 .namesize{
     display: inline-block;
     
@@ -232,21 +236,23 @@ input:focus{
 
 
 /* Responsive Design */
-@media (max-width: 768px) {
+@media (max-width: 779px) {
     .container{
-        flex-direction: column;
-        gap: 10px;
-        height: 100vh;
+        font-size: 0.8em;
     }
-    .preview{
-        flex:3;
-        grid-template-columns: repeat(2,1fr);
+    .uploadBox>.uploadarea{
+        flex: 3;
+    }
+    .uploadBox textarea{
+        flex: 1;
     }
 }
 
 
 @media(max-width:400px){
-    .uploadBox>p{
+    .container{
+        margin-top: 5vh;
+        height: 70%;
         font-size: 0.6em;
     }
 }
