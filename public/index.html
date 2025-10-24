@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="assets/CSS/login_page.css">
+    <title>Login Page</title>
+</head>
+<body>
+    <div class="container">
+        <div class="login">
+            <form class="loginForm">
+                <div class="header">
+                <p class="heading">Login in</p>
+                </div>
+                <div class="formdata">
+                    <input type="email" placeholder="johndoe@example.com" class="loginemail data" required>
+                    <input type="password" placeholder="password" class="loginpass data" required>
+                    <input type="submit" value="Login" class="loginbtn">
+                    <p class="loginerror"></p>
+                    <p class="signuplink" >Don't have an account? <a href="" class="signuphref">Sign up</a></p>
+                    </div>
+            </form>
+        </div>
+        <div class="signup">
+            <form class="signupForm">
+                <p class="heading">Sign up</p>
+                <div class="formdata">
+                    <input type="text" placeholder="Name" class="signupname data" required>
+                    <input type="email" placeholder="johndoe@example.com" class="signupemail data" required>
+                    <input type="password" placeholder="password" class="signuppass data" required>
+                    <input type="password" placeholder="confirm password" class="signupcpass dats" required>
+                    <p class="check" style="text-align: start;"></p>
+                    <input type="submit" value="Sign up" class="signupbtn">
+                    <p class="signuperror"></p>
+                    <p class="signinlink">Already have an account?<a href="" class="loginhref"> Login</a></p>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script type="module" src="assets/JS/login.js"></script>
+</body>
+</html>
