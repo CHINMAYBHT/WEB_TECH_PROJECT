@@ -1,26 +1,45 @@
-// Selectors
-let sidebar=document.querySelector(".sidebar")
-let sidebarclose=document.querySelector(".top i")
-let sidebaropen=document.querySelector("nav .fa-bars")
-let container=document.querySelector(".container")
+document.addEventListener('headerLoaded', () => {
+    console.log("header loaded");
+    let fileInput = document.getElementById('fileInput');
+    let filename = document.querySelector('.filename');
+    let browseBtn = document.querySelector('.uploadarea button');
+    let uploadArea = document.querySelector('.uploadarea');
+
+    browseBtn.addEventListener('click', () => fileInput.click());
+
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('dragover');
+        selectedFile=e.dataTransfer.files[0];
+        showFileName(selectedFile);
+    })
+
+    uploadArea.addEventListener('dragleave', () => {
+        uploadArea.classList.remove('dragover');
+    })
+
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('dragover');
+        selectedFile=e.dataTransfer.files[0];
+        showFileName(selectedFile);
+    })
+
+    fileInput.addEventListener('change', (e) => {
+        e.preventDefault();
+        let file = e.target.files[0];
+        showFileName(file);
+    })
 
 
+    function showFileName(file) {
+        if (!file) return;
+        filename.innerHTML = `<p class='namesize'>${file.name} (${(file.size / 1024).toFixed(1)}KB)</p> <i class="fa-solid fa-xmark" onclick="removeFile()"></i>`;
+    }
 
-
-// Sidebar Close 
-sidebarclose.addEventListener("click",()=>{
-    sidebar.style.left="-100%"
-    container.style.width="90%"
-    container.style.margin="0px 50px 0px 50px";
+    // Make it global so that browser can access, as its called during runtime.
+    window.removeFile=function(){
+        fileInput.value = "";
+        filename.innerHTML = "";
+    }
 })
-
-
-
-// Sidebar Open
-sidebaropen.addEventListener("click",()=>{
-    sidebar.style.left="0"
-    container.style.width="80%" 
-    container.style.margin="0px 50px 0px 350px";
-})
-
-

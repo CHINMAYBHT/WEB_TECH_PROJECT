@@ -142,7 +142,7 @@ input:not([type="submit"]) {
     border: 1px solid rgba(0, 0, 0, 0.083);
     padding: 10px;
     border-radius: 20px;
-    font-size: 0.7em;
+    font-size: 0.8em;
 }
 
 input:not([type="submit"]):focus{

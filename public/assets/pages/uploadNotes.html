@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,36 +8,23 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <title>Dashboard</title>
 </head>
-<body>
 
-    <header>
-        <nav>
-            <i class="fa-solid fa-bars"></i>
-            <ul>
-                <li><button class="navlinks"><i class="fa-solid fa-user"></i></button></li>
-            </ul>
-        </nav>
-    </header>
-    <section class="sidebar">
-        <div class="top">
-            <i class="fa-solid fa-xmark"></i>
-        </div>
-        <div class="content">
-            <div class="notes">Upload Notes</div>
-            <div class="history">Check History</div>
-            <div class="flashcards">Flashcards</div>
-            <div class="test">Tests</div>
-            <button>Logout</button>
-        </div>
-    </section>
+<body>
+    <div class="header"></div>
     <main>
         <div class="container">
             <section class="upload">
                 <div class="uploadBox">
-                    <i class="fa-solid fa-upload"></i>
-                    <p>Drag and drop your file here or paste text below</p>
-                    <input type="text" placeholder="Paste your notes here">
-                    <button class="send"><i class="fa-solid fa-paper-plane"></i></button>
+                    <div class="input">
+                        <textarea placeholder="Paste your notes here......"></textarea>
+                        <button class="send"><i class="fa-solid fa-paper-plane"></i></button>
+                    </div>
+                    <div id="uploadArea" class="uploadarea">
+                        <i class="fa-solid fa-upload"></i>
+                            <p>Drag & drop your file here or <p><button>Browse Files</button></p></p>
+                            <input type="file" id="fileInput" accept=".pdf" />
+                    </div>
+                    <div class="filename"></div>
                 </div>
             </section>
             <section class="preview">
@@ -56,7 +44,8 @@
         </div>
     </main>
 
-    
+    <script src="../JS/header.js"></script>
     <script src="../JS/uploadNotes.js"></script>
 </body>
+
 </html>
