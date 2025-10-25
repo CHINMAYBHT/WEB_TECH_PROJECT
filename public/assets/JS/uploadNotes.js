@@ -30,7 +30,9 @@ document.addEventListener('headerLoaded', () => {
         let val=await loading();
         loader.classList.remove('display');
         textinput.value="";
-        alert("Uploaded");
+        setTimeout(() => {
+            alert("Uploaded");
+        }, 500);
     })
     browseBtn.addEventListener('click', () => fileInput.click());
 
