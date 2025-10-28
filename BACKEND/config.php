@@ -1,7 +1,19 @@
 <?php
-header("Access-Control-Allow-Origin: http://localhost:3000");
+$allowedOrigins = [
+    'http://localhost:3002',
+    'http://localhost:3000',
+    'http://localhost:8080'
+];
+
+// Get the origin of the request
+$origin = isset($_SERVER['HTTP_ORIGIN']) ? $_SERVER['HTTP_ORIGIN'] : '';
+if (in_array($origin, $allowedOrigins)) {
+    header("Access-Control-Allow-Origin: $origin");
+}
+
 header("Access-Control-Allow-Methods: GET,POST, OPTIONS");
 header("Access-Control-Allow-Headers: Content-Type");
+header("Access-Control-Allow-Credentials: true");
 header("Content-Type: application/json");
 
 

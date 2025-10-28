@@ -19,9 +19,8 @@ function switchForm(form) {
         document.querySelectorAll('.loginForm .data').forEach(input => {
             input.value = "";
         });
-        document.querySelectorAll('.loginerror').forEach(p => {
-            p.innerText = "";
-        });
+        document.querySelector('.signuperror').innerText="";
+        document.querySelector(".check").innerText="";
         loginDiv.style.display = "none";
         signupDiv.style.display = "flex";
     }
@@ -29,9 +28,7 @@ function switchForm(form) {
         document.querySelectorAll('.signupForm .data').forEach(input => {
             input.value = "";
         });
-        document.querySelectorAll('.signuperror').forEach(p => {
-            p.innerText = "";
-        });
+        document.querySelector('.loginerror').innerText="";
         loginDiv.style.display = "flex";
         signupDiv.style.display = "none";
     }
@@ -92,8 +89,13 @@ loginForm.addEventListener("submit", async (e) => {
     }
     
     
-
+    
+    let button = document.querySelector(".loginbtn");
+    console.log("Login button found:", button);
+    button.classList.add("loaderDisplay");
+    console.log("Added loaderDisplay class, classes now:", button.className);
     let res = await login(emailValue, passwordValue);
+    button.classList.remove("loaderDisplay");
     console.log(res.message);
     if (res.success) {
         email.value = "";
@@ -131,7 +133,12 @@ signupForm.addEventListener("submit", async (e) => {
 
         return;
     }
+    let button = document.querySelector(".signupbtn");
+    console.log("Signup button found:", button);
+    button.classList.add("loaderDisplay");
+    console.log("Added loaderDisplay class to signup, classes now:", button.className);
     let res = await createAcc(nameValue, emailValue, passwordValue);
+    button.classList.remove("loaderDisplay");
     console.log(res.message);
     if (res.success) {
         name.value = "";

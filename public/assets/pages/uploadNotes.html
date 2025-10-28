@@ -14,26 +14,63 @@
     <div class="header"></div>
     <main>
         <div class="container">
+            <div class="notes-header">
+                <h2>Your Notes</h2>
+                <button id="addFileBtn" class="add-file-btn"><i class="fa-solid fa-plus"></i> Add Notes</button>
+            </div>
+            <div class="search-container">
+                <input type="text" id="searchInput" placeholder="Search files..." class="search-input">
+                <i class="fa-solid fa-search search-icon"></i>
+            </div>
+            <div class="files-list">
+                <table id="filesTable">
+                    <thead>
+                        <tr>
+                            <th>Title</th>
+                            <th>Date</th>
+                            <th>Size</th>
+                            <th>Actions</th>
+                        </tr>
+                    </thead>
+                    <tbody id="filesTableBody">
+                        <!-- Files will be dynamically inserted here -->
+                    </tbody>
+                </table>
+                <div id="noFilesMessage" class="no-files">
+                    <p>No files uploaded yet. Click "Add Notes" to upload your first note.</p>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Upload Modal -->
+    <div id="uploadModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h3>Upload New File</h3>
             <section class="upload">
                 <div class="uploadBox">
-                <h2 style="margin-bottom: 10px; color: white; color: black;">Paste or Upload Notes</h2>
+                    <div class="title-container">
+                        <input class="title-input" value="Enter the Title">
+                    </div>
                     <div class="input">
-                        <textarea placeholder="Paste your notes here......"></textarea>
+                        <textarea placeholder="Paste your notes here or upload below......"></textarea>
                     </div>
                     <div id="uploadArea" class="uploadarea">
                         <i class="fa-solid fa-cloud-arrow-up "></i>
-                        <p>Drag & drop your file here or
+                        <p>Drag & drop your file here or</p>
                         <p><button>Browse Files</button></p>
-                        </p>
                         <input type="file" id="fileInput" accept=".pdf" />
                     </div>
                     <div class="filename"></div>
                 </div>
             </section>
-            <div class="uploadfilesbutton"><button class="send"><p>Upload</p><i class="fa-solid fa-paper-plane"></i></button></div>
+            <div class="uploadfilesbutton">
+                <button class="send"><p>Upload</p><i class="fa-solid fa-paper-plane"></i></button>
+            </div>
         </div>
-    </main>
-    <script src="../JS/header.js"></script>
+    </div>
+    <script type="module" src="../JS/header.js"></script>
     <script src="../JS/uploadNotes.js"></script>
 </body>
 

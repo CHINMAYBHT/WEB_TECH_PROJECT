@@ -15,6 +15,8 @@ body{
 }
 
 
+
+
 .container{
     width: 900px;
     max-width: 95vw;
@@ -115,7 +117,7 @@ input[type="submit"],a{
     cursor: pointer;
 }
 
-input[type="submit"]{
+.loginbtn{
     background: linear-gradient(135deg, #6b59f2 0%, #5343fe 100%) !important;
     width: 100%;
     padding: 14px;
@@ -126,10 +128,82 @@ input[type="submit"]{
     font-weight: 600;
     letter-spacing: 1px;
     text-transform: capitalize;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
 }
 
-input[type="submit"]:hover{
+.loginbtn:hover{
     background: linear-gradient(135deg, #6b5bfc 0%, #6B5FE8 100%) !important;
+}
+
+.signupbtn{
+    background: linear-gradient(135deg, #6b59f2 0%, #5343fe 100%) !important;
+    width: 100%;
+    padding: 14px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.signupbtn:hover{
+    background: linear-gradient(135deg, #6b5bfc 0%, #6B5FE8 100%) !important;
+}
+
+.signupbtn .loader{
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: loaderSpin 1s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.signupbtn.loaderDisplay .loader{
+    opacity: 1;
+}
+
+.signupbtn.loaderDisplay .btn-text{
+    display: none;
+}
+
+.loginbtn .loader{
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: loaderSpin 1s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes loaderSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loginbtn.loaderDisplay .loader{
+    opacity: 1;
+}
+
+.loginbtn.loaderDisplay .btn-text{
+    display: none;
 }
 
 
