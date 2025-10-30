@@ -99,6 +99,35 @@ async function generateQuizForNote() {
     }
 }
 
+async function regenerateQuiz() {
+    if (!noteId) return;
+
+    // Show loading state on regenerate button
+    const regenerateBtn = document.querySelector('.regenerate-btn');
+    regenerateBtn.disabled = true;
+    regenerateBtn.innerHTML = 'Regenerating...';
+
+    try {
+        const response = await generateQuiz(noteId);
+
+        if (response.success && response.quiz) {
+            // Reload the quiz data and refresh the page display
+            alert('Quiz regenerated successfully! The page will refresh.');
+            window.location.reload();
+        } else {
+            alert('Failed to regenerate quiz: ' + (response.message || 'Unknown error'));
+        }
+
+    } catch (error) {
+        console.error('Error regenerating quiz:', error);
+        alert('Failed to regenerate quiz. Please try again.');
+    } finally {
+        // Reset button state in case of error
+        regenerateBtn.disabled = false;
+        regenerateBtn.innerHTML = '<i class="fa-solid fa-redo"></i> Regenerate Quiz';
+    }
+}
+
 // Initialize quiz
 function initQuiz() {
     if (quizData.length === 0) {
@@ -520,3 +549,4 @@ window.toggleFlag = toggleFlag;
 window.retakeQuiz = retakeQuiz;
 window.downloadQuiz = downloadQuiz;
 window.generateQuizForNote = generateQuizForNote;
+window.regenerateQuiz = regenerateQuiz;

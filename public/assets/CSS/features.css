@@ -1,4 +1,6 @@
-.container{
+.button-container{
+    margin-top: 10vh;
+    background-color: white;
     padding: 15vh 5vw 0px 5vw;
     /* background-color: yellowgreen; */
     height: 95vh;
@@ -30,7 +32,7 @@
     align-items: center;
 }
 
-.container .left,.container .right,.container .middle{
+.button-container .left,.button-container .right,.button-container .middle{
     flex: 1;
     height: 60vh;
     background-color: #7C6FFF;
@@ -87,20 +89,6 @@
     display: none;
 }
 
-.uploadedFile button{
-    width: 90%;
-    margin: 0px auto;
-    margin-top: 10px;
-    border: none;
-    border-radius: 10px;
-    font-weight: bold;
-    font-size: 1em;
-    background-color: white;
-    color: #7C6FFF;
-    padding: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease-in-out;
-}
 .left .img,.middle .img,.right .img{
     width: 80%;
     height: 50%;
@@ -120,77 +108,4 @@
 .left button:hover,.middle button:hover,.right button:hover{
     background-color: rgba(255, 255, 255, 0.859);
     color: #6153fe;
-}
-
-/* File Display Section Styles */
-.file-display {
-    padding: 5vh 5vw;
-    margin-top: 5vh;
-}
-
-.file-display h3 {
-    color: #7C6FFF;
-    text-align: center;
-    margin-bottom: 2vh;
-    font-size: 1.5em;
-    font-weight: bold;
-}
-
-.file-content {
-    width: 100%;
-    background-color: rgba(0, 0, 0, 0.799);
-    border-radius: 15px;
-    padding: 2vh 3vw;
-    color: white;
-    min-height: 30vh;
-    display: flex;
-    align-items: flex-start;
-    justify-content: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-}
-
-.file-text {
-    width: 100%;
-    word-wrap: break-word;
-    white-space: pre-wrap;
-    font-family: 'Courier New', monospace;
-    font-size: 0.9em;
-    line-height: 1.6;
-    max-height: 60vh;
-    overflow-y: auto;
-    padding: 1vh;
-}
-
-.placeholder-text {
-    color: rgba(255, 255, 255, 0.6);
-    text-align: center;
-    margin: 0;
-    font-style: italic;
-    font-size: 1.1em;
-}
-
-@media (max-width: 768px) {
-    .file-display {
-        padding: 3vh 3vw;
-        margin-top: 3vh;
-    }
-
-    .file-display h3 {
-        font-size: 1.3em;
-        margin-bottom: 3vh;
-    }
-
-    .file-content {
-        padding: 3vh 2vw;
-        min-height: 25vh;
-    }
-
-    .file-text {
-        font-size: 0.8em;
-        max-height: 50vh;
-    }
-
-    .placeholder-text {
-        font-size: 1em;
-    }
 }

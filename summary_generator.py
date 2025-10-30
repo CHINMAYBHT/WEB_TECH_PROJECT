@@ -154,7 +154,7 @@ def get_note_content(note_id, user_id):
         cursor = conn.cursor(dictionary=True)
 
         # First, check if the note exists and is accessible
-        query = "SELECT id, content, file_type, user_id FROM notes WHERE id = %s"
+        query = "SELECT id, title, content, file_type, user_id FROM notes WHERE id = %s"
         cursor.execute(query, (note_id,))
         note = cursor.fetchone()
 
@@ -206,7 +206,7 @@ def save_summary_to_db(note_id, user_id, summary_text, ai_model="gemini-2.5-flas
     except Exception as e:
         return False
 
-def save_quiz_to_db(note_id, user_id, quiz_questions):
+def save_quiz_to_db(note_id, user_id, quiz_questions, note_title=None):
     """Save quiz questions to database."""
     try:
         conn = get_db_connection()
@@ -217,14 +217,15 @@ def save_quiz_to_db(note_id, user_id, quiz_questions):
 
         # Insert or update quiz
         query = """
-        INSERT INTO quizzes (note_id, user_id, questions)
-        VALUES (%s, %s, %s)
+        INSERT INTO quizzes (note_id, user_id, questions, title)
+        VALUES (%s, %s, %s, %s)
         ON DUPLICATE KEY UPDATE
         questions = VALUES(questions),
+        title = VALUES(title),
         created_at = NOW()
         """
 
-        cursor.execute(query, (note_id, user_id, questions_json))
+        cursor.execute(query, (note_id, user_id, questions_json, note_title))
         quiz_id = cursor.lastrowid
         conn.commit()
 
@@ -393,7 +394,8 @@ def generate_quiz(note_id, user_id):
 
         # Save to database
         try:
-            quiz_id = save_quiz_to_db(note_id, user_id, quiz_questions)
+            note_title = note.get('title', 'Untitled Quiz')
+            quiz_id = save_quiz_to_db(note_id, user_id, quiz_questions, note_title)
             if quiz_id:
                 return {
                     "success": True,
@@ -401,6 +403,7 @@ def generate_quiz(note_id, user_id):
                         "id": quiz_id,
                         "note_id": note_id,
                         "user_id": user_id,
+                        "title": note_title,
                         "questions": quiz_questions
                     },
                     "message": "Quiz generated successfully"

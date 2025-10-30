@@ -14,3 +14,9 @@ function getUser($pdo,$email){
     return $stm->fetch();
 }
 
+# Submit feedback
+function submitFeedback($pdo,$name,$email,$message,$rating){
+    $stm=$pdo->prepare("INSERT INTO feedback (name,email,message,rating) VALUES (?,?,?,?);");
+    $stm->execute([$name,$email,$message,$rating]);
+    return $stm->rowCount();
+}

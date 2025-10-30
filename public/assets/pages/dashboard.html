@@ -21,7 +21,9 @@
             <a href="#arc">Features</a>
         </div>
     </div>
-    <div class="arcmain">
+
+    
+        <div class="arcmain">
         <div class="arc" id="arc"></div>
     </div>
     <main>
@@ -35,6 +37,7 @@
                     <button onclick="uploadNotes()">Upload Notes</button>
                 </div>
             </section>
+            
             <section class="viewnotes">
                 <div class="content">
                     <h1>View Your Notes</h1>
@@ -73,7 +76,7 @@
         </div>
         <div class="footer-content-right">
             <h1>Feedback or Query</h1>
-            <form action="">
+            <form>
                 <div class="name">
                     <label for="name">Name</label> <input type="text" name="name" id="name" placeholder="Name" required>
                 </div>
@@ -96,13 +99,13 @@
                     </div>
                     <input type="hidden" name="rating" id="rating" value="0">
                 </div>
-                <button>Submit</button>
+                <button onclick="submitFeedback(event)">Submit</button>
             </form>
         </div>
     </footer>
     <p class="copyright">&copy; 2025 AI Study Helper. All rights reserved.</p>
     <script type="module" src="../JS/header.js"></script>
-    <script src="../JS/dashboard.js"></script>
+    <script type="module" src="../JS/dashboard.js"></script>
 </body>
 
 </html>

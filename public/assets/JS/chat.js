@@ -124,9 +124,8 @@ function showWelcomeMessage() {
     welcomeDiv.innerHTML = `
         <div class="message-content">
             Hello! I'm here to help you with questions about your uploaded content.
-            You can ask me anything related to what you've uploaded.
+            You can ask me anything related to what you've uploaded.<br><br>
         </div>
-        <div class="message-timestamp">${new Date().toLocaleTimeString()}</div>
     `;
 
     chatMessages.appendChild(welcomeDiv);

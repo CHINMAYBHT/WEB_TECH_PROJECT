@@ -87,6 +87,11 @@ loginForm.addEventListener("submit", async (e) => {
         error.innerText = "All fields are required";
         return;
     }
+
+    if (passwordValue.length < 5) {
+        error.innerText = "Password must be at least 5 characters";
+        return;
+    }
     
     
     
@@ -126,6 +131,11 @@ signupForm.addEventListener("submit", async (e) => {
 
     if (nameValue == "" || emailValue == "" || passwordValue == "") {
         error.innerText = "All fields are required";
+        return;
+    }
+
+    if (passwordValue.length < 5) {
+        error.innerText = "Password must be at least 5 characters";
         return;
     }
 

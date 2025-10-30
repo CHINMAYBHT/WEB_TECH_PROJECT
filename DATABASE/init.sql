@@ -115,6 +115,7 @@ CREATE TABLE IF NOT EXISTS quizzes (
     id INT AUTO_INCREMENT PRIMARY KEY,
     note_id INT NOT NULL,
     user_id INT NOT NULL,
+    title VARCHAR(255) NOT NULL,
     questions JSON NOT NULL,
     created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
     FOREIGN KEY (note_id) REFERENCES notes(id) ON DELETE CASCADE,
@@ -189,4 +190,27 @@ CREATE TABLE chat_messages (
     INDEX idx_user_id (user_id),
     INDEX idx_role (role),
     INDEX idx_created_at (created_at)
+);
+
+-- Feedback table for storing user feedback and queries
+CREATE TABLE feedback (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+
+    -- Feedback submitter information
+    name VARCHAR(100) NOT NULL,
+    email VARCHAR(100) NOT NULL,
+
+    -- Feedback content
+    message TEXT NOT NULL,
+
+    -- Rating (1-5 stars)
+    rating TINYINT UNSIGNED NOT NULL DEFAULT 0,
+
+    -- Submission timestamp
+    submitted_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+
+    -- Indexes for performance
+    INDEX idx_email (email),
+    INDEX idx_submitted_at (submitted_at),
+    INDEX idx_rating (rating)
 );

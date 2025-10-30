@@ -28,7 +28,6 @@
                 <h1>Generate AI Quiz</h1>
                 <p>Create a 10-question multiple choice quiz based on your uploaded content.</p>
                 <button class="generate-btn" onclick="generateQuizForNote()">
-                    <i class="fa-solid fa-magic-wand-sparkles"></i>
                     Generate Quiz
                 </button>
                 <div class="loading-spinner" id="generateSpinner" style="display: none;">
@@ -67,10 +66,16 @@
                     </div>
                 </div>
 
-                <button class="start-btn" onclick="startQuiz()">
-                    <i class="fa-solid fa-play"></i>
-                    Start Quiz
-                </button>
+                <div class="quiz-actions">
+                    <button class="start-btn" onclick="startQuiz()">
+                        <i class="fa-solid fa-play"></i>
+                        Start Quiz
+                    </button>
+                    <button class="regenerate-btn" onclick="regenerateQuiz()">
+                        <i class="fa-solid fa-redo"></i>
+                        Regenerate Quiz
+                    </button>
+                </div>
             </div>
         </section>
 

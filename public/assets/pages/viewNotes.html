@@ -5,6 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="../CSS/viewNotes.css">
+    <link rel="stylesheet" href="../CSS/features.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
     <!-- PDF.js for PDF viewing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
@@ -48,27 +49,13 @@
                         </div>
                     </div>
 
-                    <div class="action-buttons">
-                        <button class="action-btn summarize-btn">
-                            <i class="fas fa-brain"></i> Summarize
-                        </button>
-                        <button class="action-btn quiz-btn">
-                            <i class="fas fa-question-circle"></i> Quiz
-                        </button>
-                        <button class="action-btn chat-btn">
-                            <i class="fas fa-comments"></i> Chat with AI
-                        </button>
-                        <button class="action-btn delete-btn">
-                            <i class="fas fa-trash"></i> Delete Note
-                        </button>
-                    </div>
                 </div>
 
                 <!-- Right Side - File Preview -->
                 <div class="file-preview">
                     <div class="preview-header">
                         <h3>Content Preview</h3>
-                    <div class="preview-controls">
+                        <div class="preview-controls">
                             <button id="downloadBtn" title="Download File">
                                 <i class="fas fa-download"></i>
                             </button>
@@ -84,7 +71,33 @@
             </div>
         </div>
     </main>
-
+<!-- Feature Actions -->
+            <div class="button-container">
+                <div class="left">
+                    <h2>Generate Summary</h2>
+                    <div class="img"></div>
+                    <button class="generatebtn summarize-btn" id="summary">
+                        <span class="btn-text">Generate Summary</span>
+                        <div class="loader"></div>
+                    </button>
+                </div>
+                <div class="middle">
+                    <h2>Generate QUIZ</h2>
+                    <div class="img"></div>
+                    <button class="generatebtn quiz-btn" id="quiz">
+                        <span class="btn-text">Take Quiz</span>
+                        <div class="loader"></div>
+                    </button>
+                </div>
+                <div class="right">
+                    <h2>ASK AI</h2>
+                    <div class="img"></div>
+                    <button class="generatebtn chat-btn" id="ask">
+                        <span class="btn-text">Ask AI</span>
+                        <div class="loader"></div>
+                    </button>
+                </div>
+            </div>
     <script type="module" src="../JS/header.js"></script>
     <script src="../JS/viewNotes.js"></script>
 </body>

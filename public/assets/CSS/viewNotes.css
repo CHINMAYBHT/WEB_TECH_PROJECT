@@ -69,7 +69,7 @@ main{
 
 /* Left Side - File Details */
 .file-details {
-    width: 35%;
+    flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
@@ -82,7 +82,9 @@ main{
     box-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
     border: 1px solid #e9ecef;
 }
-
+.details-card{
+    height: 100%;
+}
 .details-card h3, .actions-card h3 {
     color: #2c3e50;
     font-size: 1.4em;

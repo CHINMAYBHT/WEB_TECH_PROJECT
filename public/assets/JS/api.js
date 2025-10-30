@@ -153,3 +153,12 @@ export async function getRecentConversations(noteId) {
     });
     return await response.json();
 }
+
+export async function submitFeedback(name, email, message, rating) {
+    const response = await fetch(`${BaseURL}BACKEND/submitFeedback.php`, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+        body: new URLSearchParams({ name, email, message, rating })
+    });
+    return await response.json();
+}

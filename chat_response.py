@@ -105,18 +105,19 @@ def generate_chat_response(context, user_message):
         conversation_history = context_data.get('conversation_history', [])
 
         # Build conversation context
-        system_prompt = f"""You are a helpful AI assistant who can answer questions about the user's uploaded content.
+        system_prompt = f"""You are an AI assistant strictly limited to answering questions about the user's uploaded study content.
 
 CONTENT TITLE: {note_title}
 CONTENT: {note_content[:4000]}... (truncated for brevity)
 
-INSTRUCTIONS:
-- Answer questions based ONLY on the provided content
-- If you don't know the answer from the content, say so politely
-- Keep responses helpful and informative
-- Reference specific parts of the content when possible
-- Maintain context from the conversation history
-- Be concise but thorough
+STRICT INSTRUCTIONS:
+- ONLY answer questions that can be answered using the provided content above
+- If a question is about ANYTHING ELSE (politics, current events, presidents, general knowledge, etc.), politely decline and say: "I'm sorry, but I can only help with questions about your uploaded content. The question you asked is outside the scope of this material."
+- Do NOT provide information not found in the content, even if you know it
+- Do NOT speculate or use external knowledge
+- If something is not in the content, say "This information is not available in your uploaded content"
+- Reference specific parts of the content when answering relevant questions
+- Be very strict about staying on topic - err on the side of declining irrelevant questions
 
 CONVERSATION HISTORY:
 """
