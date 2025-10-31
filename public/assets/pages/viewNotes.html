@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/viewNotes.css">
+    <link rel="stylesheet" href="../CSS/features.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <!-- PDF.js for PDF viewing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <title>View Notes</title>
+</head>
+
+<body>
+    <div class="loader"></div>
+    <div class="header"></div>
+    <main>
+        <div class="container">
+            <div class="view-header">
+                <h1>View Note</h1>
+            </div>
+
+            <div class="content-wrapper">
+                <!-- Left Side - File Details -->
+                <div class="file-details" style="margin-top: 5vh;">
+                    <div class="details-card">
+                        <h3>File Information</h3>
+                        <div class="detail-item">
+                            <label><i class="fas fa-file-alt"></i> File Name:</label>
+                            <div class="filename-container">
+                                <input type="text" id="fileNameInput" readonly>
+                                <button id="editFileNameBtn" class="edit-icon-btn" title="Edit filename">
+                                    <i class="fas fa-edit"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="detail-item">
+                            <label><i class="fas fa-weight"></i> File Size:</label>
+                            <span id="fileSize">N/A</span>
+                        </div>
+                        <div class="detail-item">
+                            <label><i class="fas fa-file-code"></i> File Type:</label>
+                            <span id="fileType">N/A</span>
+                        </div>
+                        <div class="detail-item">
+                            <label><i class="fas fa-calendar"></i> Upload Date:</label>
+                            <span id="uploadDate">N/A</span>
+                        </div>
+                    </div>
+
+                </div>
+
+                <!-- Right Side - File Preview -->
+                <div class="file-preview">
+                    <div class="preview-header">
+                        <h3>Content Preview</h3>
+                        <div class="preview-controls">
+                            <button id="downloadBtn" title="Download File">
+                                <i class="fas fa-download"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <div class="preview-content" id="fileContent">
+                        <div class="no-content">
+                            <i class="fas fa-file-alt"></i>
+                            <p>No content to display</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+<!-- Feature Actions -->
+            <div class="button-container">
+                <div class="left">
+                    <h2>Generate Summary</h2>
+                    <div class="img"></div>
+                    <button class="generatebtn summarize-btn" id="summary">
+                        <span class="btn-text">Generate Summary</span>
+                        <div class="loader"></div>
+                    </button>
+                </div>
+                <div class="middle">
+                    <h2>Generate QUIZ</h2>
+                    <div class="img"></div>
+                    <button class="generatebtn quiz-btn" id="quiz">
+                        <span class="btn-text">Take Quiz</span>
+                        <div class="loader"></div>
+                    </button>
+                </div>
+                <div class="right">
+                    <h2>ASK AI</h2>
+                    <div class="img"></div>
+                    <button class="generatebtn chat-btn" id="ask">
+                        <span class="btn-text">Ask AI</span>
+                        <div class="loader"></div>
+                    </button>
+                </div>
+            </div>
+    <script type="module" src="../JS/header.js"></script>
+    <script src="../JS/viewNotes.js"></script>
+</body>
+
+</html>

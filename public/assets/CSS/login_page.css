@@ -1,0 +1,327 @@
+*{
+    margin: 0;
+    padding: 0;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-sizing: border-box;
+}
+
+body{ 
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+    overflow: hidden;
+}
+
+
+
+
+.container{
+    width: 900px;
+    max-width: 95vw;
+    height: 550px;
+    background: white;
+    border-radius: 30px;
+    box-shadow: 0 30px 80px rgba(0, 0, 0, 0.15);
+    display: flex;
+    overflow: hidden;
+    position: relative;
+    z-index: 1;
+}
+
+.heading{
+    text-align: center;
+    margin: 0px auto;
+    font-size: 1.8em;
+    font-weight: 700;
+    color: #1a1a1a;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+}
+
+
+.login,.signup{
+    display: flex;
+    width: 50%;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background: #fdfcfb;
+    padding: 40px;
+}
+
+.signup{
+    display: none;
+}
+
+/* Right side purple section with image */
+.login::after,
+.signup::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B7FFF 0%, #6B5FE8 100%);
+    z-index: -1;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.container::after {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(135deg, #8B7FFF 0%, #6B5FE8 100%);
+    border-radius: 0 30px 30px 0;
+    background-image: url('../images/undraw_remote-worker.svg');
+    background-size: 70%;
+    background-position: center;
+    background-repeat: no-repeat;
+    z-index: 0;
+}
+form{
+    padding: 0;
+    width: 100%;
+    max-width: 350px;
+    background: transparent;
+    border-radius: 0;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    color: #1a1a1a;
+    gap: 25px;
+    box-shadow: none;
+    z-index: 10;
+}
+
+.formdata{
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+}
+
+.header {
+    margin-bottom: 15px;
+}
+
+input[type="submit"],a{
+    margin: 0px auto;
+    text-decoration: none;
+    cursor: pointer;
+}
+
+.loginbtn{
+    background: linear-gradient(135deg, #6b59f2 0%, #5343fe 100%) !important;
+    width: 100%;
+    padding: 14px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.loginbtn:hover{
+    background: linear-gradient(135deg, #6b5bfc 0%, #6B5FE8 100%) !important;
+}
+
+.signupbtn{
+    background: linear-gradient(135deg, #6b59f2 0%, #5343fe 100%) !important;
+    width: 100%;
+    padding: 14px;
+    color: white;
+    border: none;
+    border-radius: 25px;
+    font-size: 0.95rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    text-transform: capitalize;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    transition: all 0.3s ease;
+}
+
+.signupbtn:hover{
+    background: linear-gradient(135deg, #6b5bfc 0%, #6B5FE8 100%) !important;
+}
+
+.signupbtn .loader{
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: loaderSpin 1s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+.signupbtn.loaderDisplay .loader{
+    opacity: 1;
+}
+
+.signupbtn.loaderDisplay .btn-text{
+    display: none;
+}
+
+.loginbtn .loader{
+    width: 16px;
+    height: 16px;
+    border: 2px solid rgba(255,255,255,0.3);
+    border-top: 2px solid white;
+    border-radius: 50%;
+    animation: loaderSpin 1s linear infinite;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+}
+
+@keyframes loaderSpin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+.loginbtn.loaderDisplay .loader{
+    opacity: 1;
+}
+
+.loginbtn.loaderDisplay .btn-text{
+    display: none;
+}
+
+
+
+input::placeholder{
+    color: rgba(0, 0, 0, 0.384);
+}
+
+input:not([type="submit"]) {
+    border: 1px solid rgba(0, 0, 0, 0.083);
+    padding: 10px;
+    border-radius: 20px;
+    font-size: 0.8em;
+}
+
+input:not([type="submit"]):focus{
+    outline: 1px solid rgba(255, 0, 0, 0.083);
+}
+
+
+
+/* Ensure submit buttons don't inherit input styles */
+
+.signuplink,.signinlink{
+    font-size: 0.85em;
+    text-align: center;
+    color: #666;
+    margin-top: 8px;
+}
+
+.signuplink a,
+.signinlink a {
+    color: #7C6FFF;
+    font-weight: 600;
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.signuplink a:hover,
+.signinlink a:hover {
+    color: #6B5FE8;
+    text-decoration: underline;
+}
+
+
+
+/* Error Message */
+
+.loginerror,.signuperror,.check{
+    color: red;
+    font-size: 0.7em;
+    text-align: center;
+}
+
+
+/* Only show validation styles after interaction */
+input:not(:placeholder-shown):invalid {
+    border-color: #ff4444;
+}
+
+/* Show green border only when valid and not empty */
+input:not(:placeholder-shown):valid {
+    border-color: #00C851;
+}
+
+/* Remove the default red outline in Firefox */
+input:invalid {
+    box-shadow: none;
+}
+
+/* Responsive Design */
+@media (max-width: 900px) {
+    .container {
+        width: 95vw;
+        height: auto;
+        flex-direction: column;
+        min-height: 600px;
+    }
+    
+    .login, .signup {
+        width: 100%;
+        padding: 40px 30px;
+    }
+    
+    .container::after {
+        display: none;
+    }
+    
+    form {
+        max-width: 100%;
+    }
+}
+
+@media (max-width: 480px) {
+    .container {
+        border-radius: 20px;
+        min-height: 500px;
+    }
+    
+    .login, .signup {
+        padding: 30px 20px;
+    }
+    
+    .heading {
+        font-size: 1.4em;
+    }
+    
+    form {
+        gap: 20px;
+    }
+    
+    input {
+        padding: 12px 16px;
+        font-size: 0.85em;
+    }
+    
+    input[type="submit"] {
+        padding: 12px;
+        font-size: 0.9rem;
+    }
+}

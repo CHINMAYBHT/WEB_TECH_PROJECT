@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/dashboard.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <title>AI Study Helper - Dashboard</title>
+</head>
+
+<body>
+    <div class="header"></div>
+    <div class="banner">
+        <div class="banner-content">
+            <h1>Empower Your Learning Journey</h1>
+            <p>Unlock your full potential with a smart study companion that organizes your notes, quizzes you on key
+                concepts, and adapts to your learning style. Study efficiently, track your progress, and master every
+                topic with confidence — all in one seamless platform.</p>
+            <button onclick="getStarted()" class="bannerBtn">Get Started</button>
+            <a href="#arc">Features</a>
+        </div>
+    </div>
+
+    
+        <div class="arcmain">
+        <div class="arc" id="arc"></div>
+    </div>
+    <main>
+        <div class="container" id="container">
+            <section class="uploadnotes">
+                <div class="image"></div>
+                <div class="content">
+                    <h1>Upload Your Notes</h1>
+                    <p>Upload your notes as text or browse files in your local system or drag and drop to get started
+                        with the features.</p>
+                    <button onclick="uploadNotes()">Upload Notes</button>
+                </div>
+            </section>
+            
+            <section class="viewnotes">
+                <div class="content">
+                    <h1>View Your Notes</h1>
+                    <p>View the notes uploaded by you. You can also delete the notes uploaded by you. See the summary, quiz and AI chats.</p>
+                    <button onclick="viewNotes()">View Notes</button>
+                </div>
+                <div class="image"></div>
+            </section>
+            <section class="ai">
+                <div class="image"></div>
+                <div class="content">
+                    <h1>AI Chat Bot</h1>
+                    <p>AI Chat Bot is a smart study companion that helps you with your studies. It can answer your
+                        questions, provide you with study tips, and help you with your assignments.</p>
+                    <button onclick="ai()">Chat with AI</button>
+                </div>
+            </section>
+            <section class="report">
+                <div class="image"></div>
+                <div class="content">
+                    <h1>Report</h1>
+                    <p>View the report of your performance, download the report and track your progress to see how you are improving.</p>
+                    <button onclick="report()">View Report</button>
+                </div>
+            </section>
+        </div>
+    </main>
+    <footer>
+        <div class="footer-content-left">
+            <div class="footer-content-center"></div>
+            <div class="social-media">
+                <a href="#"><i class="fa-solid fa-envelope"></i></a>
+                <a href="#"><i class="fab fa-linkedin-in"></i></a>
+                <a href="#"><i class="fab fa-github"></i></a>
+            </div>
+        </div>
+        <div class="footer-content-right">
+            <h1>Feedback or Query</h1>
+            <form>
+                <div class="name">
+                    <label for="name">Name</label> <input type="text" name="name" id="name" placeholder="Name" required>
+                </div>
+                <div class="email">
+                    <label for="email">Email</label> <input type="email" name="email" id="email" placeholder="Email"
+                        required>
+                </div>
+                <div class="message">
+                    <label for="message">Message</label> <textarea name="message" id="message" cols="22" rows="10"
+                        required></textarea>
+                </div>
+                <div class="rating">
+                    <label>Rating</label>
+                    <div class="stars">
+                        <i class="fas fa-star" data-rating="1"></i>
+                        <i class="fas fa-star" data-rating="2"></i>
+                        <i class="fas fa-star" data-rating="3"></i>
+                        <i class="fas fa-star" data-rating="4"></i>
+                        <i class="fas fa-star" data-rating="5"></i>
+                    </div>
+                    <input type="hidden" name="rating" id="rating" value="0">
+                </div>
+                <button onclick="submitFeedback(event)">Submit</button>
+            </form>
+        </div>
+    </footer>
+    <p class="copyright">&copy; 2025 AI Study Helper. All rights reserved.</p>
+    <script type="module" src="../JS/header.js"></script>
+    <script type="module" src="../JS/dashboard.js"></script>
+</body>
+
+</html>

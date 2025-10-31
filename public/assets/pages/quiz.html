@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../CSS/quiz.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+    <title>Quiz - AI Study Helper</title>
+</head>
+<body>
+    <div class="header"></div>
+    
+    <main class="quiz-container">
+        <!-- Quiz Loading Section -->
+        <section class="quiz-loading" id="quizLoading" style="display: none;">
+            <div class="loading-card">
+                <div class="spinner"></div>
+                <h2>Loading Quiz...</h2>
+                <p>Please wait while we load your quiz.</p>
+            </div>
+        </section>
+
+        <!-- Generate Quiz Section -->
+        <section class="generate-quiz" id="generateQuizSection" style="display: none;">
+            <div class="generate-card">
+                <i class="fa-solid fa-brain"></i>
+                <h1>Generate AI Quiz</h1>
+                <p>Create a 10-question multiple choice quiz based on your uploaded content.</p>
+                <button class="generate-btn" onclick="generateQuizForNote()">
+                    Generate Quiz
+                </button>
+                <div class="loading-spinner" id="generateSpinner" style="display: none;">
+                    <div class="spinner"></div>
+                    <p>Generating quiz using AI...</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Info Section -->
+        <section class="quiz-info" id="quizInfo" style="display: none;">
+            <div class="info-card">
+                <h1 class="quiz-title" id="quizTitle">Quiz</h1>
+                <p class="quiz-description" id="quizDescription">Test your knowledge — Answer 10 questions!</p>
+
+                <div class="quiz-details" id="quizDetails">
+                    <div class="detail-item">
+                        <i class="fa-solid fa-tag"></i>
+                        <span id="quizCategory">Category: General</span>
+                    </div>
+                    <div class="detail-item">
+                        <i class="fa-solid fa-clock"></i>
+                        <span>Questions: 10</span>
+                    </div>
+                </div>
+
+                <div class="quiz-settings">
+                    <div class="setting-group">
+                        <label for="timePerQuestion">Time per question:</label>
+                        <select id="timePerQuestion">
+                            <option value="60" selected>1 minute</option>
+                            <option value="120">2 minutes</option>
+                            <option value="300">5 minutes</option>
+                            <option value="600">10 minutes</option>
+                        </select>
+                    </div>
+                </div>
+
+                <div class="quiz-actions">
+                    <button class="start-btn" onclick="startQuiz()">
+                        <i class="fa-solid fa-play"></i>
+                        Start Quiz
+                    </button>
+                    <button class="regenerate-btn" onclick="regenerateQuiz()">
+                        <i class="fa-solid fa-redo"></i>
+                        Regenerate Quiz
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Quiz Question Area -->
+        <section class="quiz-area" id="quizArea" style="display: none;">
+            <div class="question-navigation">
+                <button class="nav-arrow" id="navPrevBtn" onclick="previousQuestion()" disabled>
+                    <i class="fa-solid fa-chevron-left"></i>
+                </button>
+                <div class="question-boxes" id="questionBoxes"></div>
+                <button class="nav-arrow" id="navNextBtn" onclick="nextQuestion()">
+                    <i class="fa-solid fa-chevron-right"></i>
+                </button>
+                <div class="nav-timer" id="navTimer">
+                    <i class="fa-solid fa-clock"></i>
+                    <span id="navTimeLeft">01:00</span>
+                </div>
+            </div>
+
+            <div class="quiz-header">
+                <div class="progress-info">
+                    <span class="question-counter">Question <span id="currentQ">1</span> of <span id="totalQ">10</span></span>
+                </div>
+                <div class="quiz-actions">
+                    <button class="action-btn-small flag-btn" id="flagBtn" onclick="toggleFlag()">
+                        <i class="fa-solid fa-flag"></i>
+                        Flag
+                    </button>
+                    <button class="action-btn-small skip-btn" onclick="skipQuestion()">
+                        <i class="fa-solid fa-forward"></i>
+                        Skip
+                    </button>
+                </div>
+            </div>
+
+            <div class="question-card">
+                <h2 class="question-text" id="questionText"></h2>
+                <div class="options" id="optionsContainer"></div>
+                
+                <div class="quiz-controls">
+                    <button class="next-btn-large" id="nextBtn" onclick="nextQuestion()">
+                        Next Question
+                        <i class="fa-solid fa-arrow-right"></i>
+                    </button>
+                </div>
+            </div>
+        </section>
+
+        <!-- Results Section -->
+        <section class="results-section" id="resultsSection" style="display: none;">
+            <div class="results-card">
+                <div class="results-header">
+                    <div class="score-section">
+                        <h1>Quiz Complete!</h1>
+                        <div class="score-circle">
+                            <div class="score-text">
+                                <span class="score-number" id="finalScore">0</span>
+                                <span class="score-total">/ 10</span>
+                            </div>
+                        </div>
+                        <div class="percentage" id="percentage">0%</div>
+                        <div class="performance-message" id="performanceMessage"></div>
+                    </div>
+                    
+                    <div class="stats-section">
+                        <div class="stat-card">
+                            <div class="stat-value correct" id="correctCount">0</div>
+                            <div class="stat-label">Correct</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value wrong" id="wrongCount">0</div>
+                            <div class="stat-label">Wrong</div>
+                        </div>
+                        <div class="stat-card">
+                            <div class="stat-value skipped" id="skippedCount">0</div>
+                            <div class="stat-label">Skipped</div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="questions-review">
+                    <h2>Question Review</h2>
+                    <div id="questionsReviewContainer"></div>
+                </div>
+
+                <div class="result-actions">
+                    <button class="action-btn retake-btn" onclick="retakeQuiz()">
+                        <i class="fa-solid fa-redo"></i>
+                        Retake Quiz
+                    </button>
+                    <button class="action-btn download-btn" onclick="downloadQuiz()">
+                        <i class="fa-solid fa-download"></i>
+                        Download Results
+                    </button>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <script type="module" src="../JS/header.js"></script>
+    <script type="module" src="../JS/quiz.js"></script>
+</body>
+</html>
