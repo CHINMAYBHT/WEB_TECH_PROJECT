@@ -61,9 +61,10 @@ npm run build
 ```
 ## To Run Files
 
-php -c "C:\php\php.ini" -S localhost:8080
+- php -c "C:\php\php.ini" -S localhost:8080
 
-browser-sync start --server "public" --files "public/*.html, public/assets/css/*.css, public/assets/js/*.js"
+- browser-sync start --server "public" --files "public/*.html, public/assets/css/*.css, public/assets/js/*.js" 
+- (if u wish to sync changes in your frontend files with the browser automatically)
 - above command in another terminal window
 - open localhost:3000
 
